@@ -8,7 +8,7 @@
 }
 .react-grid-item img {
   pointer-events: none;
-  user-select: none;  
+  user-select: none;
 }
 .react-grid-item.cssTransforms {
   transition-property: transform;
@@ -32,8 +32,8 @@
   background: rgba(87, 126, 255, 0.08);
   transition-duration: 100ms;
   z-index: 2;
-  border: 1px #577EFF dashed;
-  z-index: 2;
+  border: 1px #577eff dashed;
+  border-radius: 8px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
