@@ -62,6 +62,8 @@ import type { Props, DefaultProps } from "./ReactGridLayoutPropTypes";
 
 const layoutClassName = "react-grid-layout";
 let isFirefox = false;
+let forceUpdateCount = -1;
+
 // Try...catch will protect from navigator not existing (e.g. node) or a bad implementation of navigator
 try {
   isFirefox = /firefox/i.test(navigator.userAgent);
@@ -72,7 +74,6 @@ try {
 /**
  * A reactive, fluid grid layout with draggable, resizable components.
  */
-
 export default class ReactGridLayout extends React.Component<Props, State> {
   // TODO publish internal ReactClass displayName transform
   static displayName: ?string = "ReactGridLayout";
@@ -170,9 +171,10 @@ export default class ReactGridLayout extends React.Component<Props, State> {
     if (
       !isEqual(nextProps.layout, prevState.propsLayout) ||
       nextProps.compactType !== prevState.compactType ||
-      (!isEqual(nextProps.layout, prevState.layout) &&
-        nextProps.layout.length === prevState.layout.length)
+      (forceUpdateCount!==nextProps.forceUpdateCount)
     ) {
+      forceUpdateCount = nextProps.forceUpdateCount
+
       newLayoutBase = nextProps.layout;
     } else if (!childrenEqual(nextProps.children, prevState.children)) {
       // If children change, also regenerate the layout. Use our state
