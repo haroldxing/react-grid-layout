@@ -363,6 +363,7 @@ declare namespace ReactGridLayout {
       cols: number,
       containerPadding: [number, number],
     ): void;
+    
   }
 
   class Responsive extends React.Component<ResponsiveProps> { }
@@ -379,4 +380,6 @@ declare namespace ReactGridLayout {
   function WidthProvider<P>(
     component: React.ComponentClass<P> | React.FunctionComponent<P>,
   ): React.ComponentClass<P & WidthProviderProps>;
+
+  const utils: any;
 }
